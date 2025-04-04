@@ -88,7 +88,7 @@ const CropRecommendationHomeView = () => {
                     employment. 70% of Indian population directly relies on
                     agriculture. This project focuses on solving multiple
                     problems which the farmers would face. The common difficulty
-                    present among the Indian farmers is, they don’t opt for the
+                    present among the Indian farmers is, they don't opt for the
                     proper crop based on their soil requirements. Due to this,
                     they face a serious setback in productivity. This problem of
                     the farmers has been solved through precision agriculture.
@@ -111,7 +111,6 @@ const CropRecommendationHomeView = () => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => history.push("/cropRecommendation")}
                     style={{
                       border: "2px solid white",
                       width: "100%",
@@ -149,7 +148,6 @@ const CropRecommendationHomeView = () => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={() => history.push("/cropRecommendation")}
                     style={{ margin: "30px" }}
                   >
                     CHOOSE CROP
