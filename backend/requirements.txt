@@ -1,0 +1,16 @@
+matplotlib
+numpy == 1.14.6
+opencv-python
+pandas
+seaborn
+scikit-learn
+tensorflow
+tqdm
+Flask_SQLAlchemy
+requests
+Flask
+geocoder
+Werkzeug
+flask_cors
+PyJWT
+gunicorn

@@ -5,7 +5,7 @@ import numpy as np
 
 def getWeather(district):
     response = requests.get(
-        "http://api.weatherapi.com/v1/forecast.json?key=0f8ec5755c32450cb36173757250502&q="+district+"&days=10",).json()
+        "http://api.weatherapi.com/v1/forecast.json?key=53b3639f89eb4c5e96c172844250302&q="+district+"&days=10",).json()
     res = pd.DataFrame.from_records(response)
     forecast = res['forecastday':'name']
     f = pd.DataFrame.from_records(forecast['forecast']['forecastday'])
