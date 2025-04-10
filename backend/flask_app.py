@@ -204,34 +204,7 @@ def recommendNPK(current_user):
 @app.route("/A1/recommendFertilizer", methods=['POST'])
 @token_required
 def recommendFertilizer(current_user):
-    # data = request.json
 
-    # NPKPrediction = pd.read_csv(
-    #     "./data/FertilizerPrediction.csv")
-    # crop_category = list(dict(
-    #     enumerate(NPKPrediction['Crop Type'].astype('category').cat.categories)).values())
-    # soil_category = list(dict(
-    #     enumerate(NPKPrediction['Soil Type'].astype('category').cat.categories)).values())
-    # fertilizer_category = dict(
-    #     enumerate(NPKPrediction['Fertilizer Name'].astype('category').cat.categories))
-
-    # soil = soil_category.index(data.get('soil'))
-    # try:
-    #     crop = crop_category.index(data.get('crop'))
-    # except ValueError:
-    #     return make_response(jsonify({"message": "Invalid crop"}), 400)
-    # nitrogen = data.get('nitrogen')
-    # potassium = data.get('potassium')
-    # phosphorus = data.get('phosphorus')
-
-    # district = request.args.get("district")
-    # weather = weatherApi.getWeather(district)[:2]
-    # fertilizerRecommendation = utils.loadpickles(
-    #     "pickledFiles/fertilizerRecommendation.pkl")
-    # fertilizer_input = np.array(
-    #     [*weather,  soil, crop, nitrogen, potassium, phosphorus]).reshape(1, -1)
-    # fertilizer = fertilizerRecommendation.predict(fertilizer_input)
-    # fertilizer = fertilizer_category[fertilizer[0]]
     return jsonify({"fertilizer": "not available"})
 
 
@@ -296,7 +269,9 @@ def recommendCropYield(current_user):
         "pickledFiles/cropProductionScaler.sav")
     yield_input_scaler = cropProductionScaler.transform(yield_input)
     crop_yield = cropProduction.predict(yield_input_scaler)
-    # crop_yield[0] = crop_yield[0] // 10000 # in kg
+
+    #TODO: convert per hectare to per acre
+
     return jsonify({"yield": crop_yield[0]})
 
 
