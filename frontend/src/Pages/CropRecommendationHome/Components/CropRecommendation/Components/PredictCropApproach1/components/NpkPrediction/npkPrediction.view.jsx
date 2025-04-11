@@ -141,7 +141,7 @@ const NpkPredictionView = ({
                 handlePageChange(5);
               }}
             >
-              CHOOSE FERTILIZER
+              CHOOSE AREA
             </Button>
           </motion.div>
         </Box>

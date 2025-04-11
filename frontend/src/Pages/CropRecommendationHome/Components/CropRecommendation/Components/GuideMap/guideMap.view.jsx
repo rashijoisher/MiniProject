@@ -19,7 +19,6 @@ const GuideMapView = ({ progress, approach }) => {
     "Choose Location",
     "Predict Crop",
     "Get NPK values",
-    "Predict Fertilizer",
     "Choose Area",
     "Predict Crop Yield",
   ];
@@ -86,9 +85,8 @@ const GuideMapView = ({ progress, approach }) => {
       1: <PersonPinIcon />,
       2: <NaturePeopleIcon />,
       3: <EmojiNatureIcon />,
-      4: <NatureIcon />,
-      5: <LandscapeIcon />,
-      6: <EcoIcon />,
+      4: <LandscapeIcon />,
+      5: <EcoIcon />,
     };
 
     return (

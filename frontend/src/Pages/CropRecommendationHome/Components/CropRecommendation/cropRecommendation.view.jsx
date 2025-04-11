@@ -136,14 +136,9 @@ const CropRecommendationView = ({
                   if (page === 6) {
                     handlePageChange(2);
                     handleProgressChange(0);
-                  } else if (page === 7) {
-                    if (approach === 1) {
-                      handlePageChange(5);
-                      handleProgressChange(3);
-                    } else if (approach === 2) {
-                      handlePageChange(6);
-                      handleProgressChange(1);
-                    }
+                  } else if (page === 5) {
+                    handlePageChange(4);
+                    handleProgressChange(2);
                   } else {
                     handlePageChange(page - 1);
                     handleProgressChange(progress - 1);
@@ -210,64 +205,30 @@ const CropRecommendationView = ({
             npkValues={npkValues}
             handleNpkChange={handleNpkChange}
           />
-        ) : page === 5 ? (
-          <PredictFertilizer
+        ) : page >= 5 && (
+          <PredictCropYield
             page={page}
             handlePageChange={handlePageChange}
-            envfactors={envfactors}
+            approach={approach}
+            chosenstate={chosenstate}
+            locationval={locationval}
             crop={crop}
-            npkValues={npkValues}
             fertilizer={fertilizer}
-            handleFertilizerChange={handleFertilizerChange}
-            soiltype={soiltype}
-            soiltypeval={soiltypeval}
-            handleSoilTypeChange={handleSoilTypeChange}
-            handleSoilTypeValChange={handleSoilTypeValChange}
-            allsoiltypes={allsoiltypes}
-            handleSoilTypeAPI={handleSoilTypeAPI}
-            locationval={locationval}
-          />
-        ) : page === 6 ? (
-          <PredictCropApproach2
-            page={page}
-            handlePageChange={handlePageChange}
-            envfactors={envfactors}
-            location={location}
-            locationval={locationval}
-            handleLocationChange={handleLocationChange}
-            handleLocationvalChange={handleLocationvalChange}
             npkValues={npkValues}
-            handleNpkChange={handleNpkChange}
-            crop={crop}
-            handleCropChange={handleCropChange}
+            area={area}
+            handleAreaChange={handleAreaChange}
+            areaval={areaval}
+            handleAreaValChange={handleAreaValChange}
+            season={season}
+            seasonval={seasonval}
+            handleSeasonChange={handleSeasonChange}
+            handleSeasonValChange={handleSeasonValChange}
+            allseasons={allseasons}
+            handleSeasonAPI={handleSeasonAPI}
+            cropyield={cropyield}
+            handleCropYield={handleCropYield}
             handleProgressChange={handleProgressChange}
           />
-        ) : (
-          page >= 7 && (
-            <PredictCropYield
-              page={page}
-              handlePageChange={handlePageChange}
-              approach={approach}
-              chosenstate={chosenstate}
-              locationval={locationval}
-              crop={crop}
-              fertilizer={fertilizer}
-              npkValues={npkValues}
-              area={area}
-              handleAreaChange={handleAreaChange}
-              areaval={areaval}
-              handleAreaValChange={handleAreaValChange}
-              season={season}
-              seasonval={seasonval}
-              handleSeasonChange={handleSeasonChange}
-              handleSeasonValChange={handleSeasonValChange}
-              allseasons={allseasons}
-              handleSeasonAPI={handleSeasonAPI}
-              cropyield={cropyield}
-              handleCropYield={handleCropYield}
-              handleProgressChange={handleProgressChange}
-            />
-          )
         )}
       </div>
     </>
