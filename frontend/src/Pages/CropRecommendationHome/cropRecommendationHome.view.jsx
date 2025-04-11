@@ -118,7 +118,7 @@ const CropRecommendationHomeView = () => {
                       height: "100%",
                     }}
                   >
-                    CHOOSE CROP
+                    GET STARTED
                   </Button>
                 </motion.div>
               </Grid>
@@ -152,7 +152,7 @@ const CropRecommendationHomeView = () => {
                     onClick={() => history.push("/cropRecommendation")}
                     style={{ margin: "30px" }}
                   >
-                    CHOOSE CROP
+                    GET STARTED
                   </Button>
                 </motion.div>
               )}

@@ -22,7 +22,7 @@ const FertilizerQuestionView = ({ handleYes, handleNo }) => {
         }}
       >
         <Typography variant="h6">
-          Are you interested in using fertilizer?
+          Do you want to predict NPK values?
         </Typography>
 
         <Grid
