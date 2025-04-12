@@ -111,7 +111,7 @@ const GetSeasonView = ({
                       color="primary"
                       variant="contained"
                       onClick={() => {
-                        handlePredictCropYield();
+                        // handlePredictCropYield();
                       }}
                     >
                       PREDICT CROP YIELD

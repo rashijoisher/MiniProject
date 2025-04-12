@@ -271,7 +271,7 @@ const PredictCropView = ({
                   color="primary"
                   variant="contained"
                   style={{ marginTop: "20px", width: "300px" }}
-                  onClick={handleNpkClick}
+                  // onClick={handleNpkClick}
                 >
                   PREDICT NPK
                 </Button>

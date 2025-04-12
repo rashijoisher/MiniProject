@@ -185,7 +185,7 @@ const PredictFertilizerView = ({
                           color="primary"
                           variant="contained"
                           onClick={() => {
-                            handleCropYieldPage();
+                            // handleCropYieldPage();
                           }}
                         >
                           PREDICT CROP YIELD

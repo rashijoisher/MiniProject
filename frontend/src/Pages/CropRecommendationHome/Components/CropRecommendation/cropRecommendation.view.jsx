@@ -205,6 +205,21 @@ const CropRecommendationView = ({
             npkValues={npkValues}
             handleNpkChange={handleNpkChange}
           />
+        ) : page === 6 ? (
+          <PredictCropApproach2
+            page={page}
+            handlePageChange={handlePageChange}
+            envfactors={envfactors}
+            location={location}
+            locationval={locationval}
+            handleLocationChange={handleLocationChange}
+            handleLocationvalChange={handleLocationvalChange}
+            npkValues={npkValues}
+            handleNpkChange={handleNpkChange}
+            crop={crop}
+            handleCropChange={handleCropChange}
+            handleProgressChange={handleProgressChange}
+          />
         ) : page >= 5 && (
           <PredictCropYield
             page={page}

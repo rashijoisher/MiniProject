@@ -32,13 +32,17 @@ const ChooseLocation = ({
   approach,
 }) => {
   const handleWeatherUpdate = () => {
-    getWeatherDetails(locationval)
-      .then((resp) => {
-        handleEnvFactorsChange(resp);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return new Promise((resolve, reject) => {
+      getWeatherDetails(locationval)
+        .then((resp) => {
+          handleEnvFactorsChange(resp);
+          resolve();
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+    });
   };
 
   return (

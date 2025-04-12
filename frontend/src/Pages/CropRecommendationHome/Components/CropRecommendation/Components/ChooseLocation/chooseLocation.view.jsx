@@ -190,10 +190,14 @@ const ChooseLocationView = ({
               }}
             >
               <Button
-                onClick={() => {
-                  handleWeatherUpdate();
-                  if (approach === 1) handlePageChange(3);
-                  else handlePageChange(6);
+                onClick={async () => {
+                  try {
+                    await handleWeatherUpdate();
+                    if (approach === 1) handlePageChange(3);
+                    else handlePageChange(6);
+                  } catch (err) {
+                    console.error("Failed to update weather:", err);
+                  }
                 }}
                 color="primary"
                 variant="contained"
