@@ -11,11 +11,21 @@ import {
   Button,
   useMediaQuery,
   CircularProgress,
+  Paper,
+  Divider,
+  Grid,
+  Tooltip,
+  Card,
+  CardContent,
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import NatureIcon from "@material-ui/icons/Nature";
 import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
 import EmojiNatureIcon from "@material-ui/icons/EmojiNature";
+import InfoIcon from "@material-ui/icons/Info";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import EcoIcon from "@material-ui/icons/Eco";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const PredictCropApproach2View = ({
   page,
@@ -38,212 +48,244 @@ const PredictCropApproach2View = ({
   const matchesforxl = useMediaQuery(mediatheme2.breakpoints.up("lg"));
 
   return (
-    <>
-      <div style={{ height: "80%" }}>
-        <Box
-          p={3}
-          style={{
-            display: "flex",
-            justifyContent: matches ? "flex-end" : "center",
-            padding: "30px",
-            marginTop: !matches && "60px",
-          }}
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="90vh"
+    >
+      <Paper
+        elevation={3}
+        style={{
+          width: "90%",
+          maxWidth: "800px",
+          padding: "2rem",
+          borderRadius: "1rem",
+          background: "rgba(255, 255, 255, 0.95)",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <div
-            style={{
-              boxShadow:
-                "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px",
-              width: "300px",
-              alignItems: "center",
-              textAlign: "center",
-              justifyContent: "space-between",
-              height: "10%",
-              padding: "20px",
-              marginTop: matches && !matchesforxl && "40px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
+          <Box display="flex" alignItems="center" justifyContent="space-between" mb={3}>
+            <Box display="flex" alignItems="center">
+              <EcoIcon style={{ color: "#4CAF50", fontSize: "2rem", marginRight: "1rem" }} />
+              <Typography variant="h5" style={{ fontWeight: 600, color: "#2C3E50" }}>
+                NPK Values Input
+              </Typography>
+            </Box>
+            
+            <Card 
+              variant="outlined" 
+              style={{ 
+                maxWidth: "200px",
+                borderRadius: "12px",
+                border: "1px solid rgba(76, 175, 80, 0.3)",
+                background: "rgba(76, 175, 80, 0.05)"
               }}
             >
-              <Typography style={{ fontSize: "0.95em" }}>LOCATION</Typography>
-              <Typography style={{ fontSize: "0.95em" }}>
-                {locationval.toUpperCase()}
-              </Typography>
-            </div>
-            <Box mt={2}>
-              <Button
-                variant="outlined"
-                color="primary"
-                onClick={() => {
-                  handlePageChange(2);
-                  handleProgressChange(0);
-                }}
-              >
-                CHANGE LOCATION
-              </Button>
-            </Box>
-          </div>
-        </Box>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "60%",
-            margin: "auto",
-            gap: "20px",
-          }}
-        >
-          {(!npkValues.nitrogen ||
-            !npkValues.phosphorus ||
-            !npkValues.potassium) && (
-            <Typography>ENTER NPK VALUES TO PREDICT CROP</Typography>
-          )}
-
-          <FormControl style={{ width: "300px" }} variant="outlined">
-            <InputLabel>Nitrogen</InputLabel>
-            <OutlinedInput
-              value={npkValues.nitrogen}
-              onChange={handleNpkChange}
-              labelWidth={60}
-              type="number"
-              id="nitrogen"
-              name="nitrogen"
-              endAdornment={
-                <InputAdornment position="end">
-                  <NatureIcon style={{ color: "#777" }} />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
-          <FormControl style={{ width: "300px" }} variant="outlined">
-            <InputLabel>Phosphorus</InputLabel>
-            <OutlinedInput
-              value={npkValues.phosphorus}
-              onChange={handleNpkChange}
-              labelWidth={85}
-              type="number"
-              id="phosphorus"
-              name="phosphorus"
-              endAdornment={
-                <InputAdornment position="end">
-                  <NaturePeopleIcon style={{ color: "#777" }} />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
-          <FormControl style={{ width: "300px" }} variant="outlined">
-            <InputLabel>Potassium</InputLabel>
-            <OutlinedInput
-              value={npkValues.potassium}
-              onChange={handleNpkChange}
-              labelWidth={75}
-              type="number"
-              id="potassium"
-              name="potassium"
-              endAdornment={
-                <InputAdornment position="end">
-                  <EmojiNatureIcon style={{ color: "#777" }} />
-                </InputAdornment>
-              }
-            ></OutlinedInput>
-          </FormControl>
-          {npkValues.nitrogen &&
-            npkValues.phosphorus &&
-            npkValues.potassium &&
-            (crop ? (
-              <>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.7,
-                  }}
-                >
-                  <Typography
-                    style={{
-                      boxShadow:
-                        "rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px",
-                      margin: "5px",
-                      padding: "15px",
-                      width: "300px",
-                      display: "flex",
-                      justifyContent: "space-between",
+              <CardContent style={{ padding: "0.75rem" }}>
+                <Box display="flex" alignItems="center" justifyContent="space-between">
+                  <Typography variant="body2" color="textSecondary">Location:</Typography>
+                  <Typography variant="body2" style={{ fontWeight: "bold" }}>
+                    {locationval.toUpperCase()}
+                  </Typography>
+                </Box>
+                <Box mt={1} textAlign="right">
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => {
+                      handlePageChange(2);
+                      handleProgressChange(0);
                     }}
                   >
-                    <Typography> CROP </Typography>
-                    <Typography style={{ textAlign: "right" }}>
-                      {crop.toUpperCase()}
-                    </Typography>
+                    Change
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          </Box>
+
+          <Divider style={{ marginBottom: "2rem" }} />
+
+          <Box textAlign="center" mb={4}>
+            <Typography variant="subtitle1" color="textSecondary" paragraph>
+              Enter your soil's Nitrogen, Phosphorus, and Potassium values to get personalized crop recommendations
+            </Typography>
+          </Box>
+
+          <Grid container spacing={4} justify="center">
+            <Grid item xs={12} md={8}>
+              <Box mb={4}>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel>Nitrogen (N)</InputLabel>
+                  <OutlinedInput
+                    value={npkValues.nitrogen}
+                    onChange={handleNpkChange}
+                    labelWidth={90}
+                    type="number"
+                    id="nitrogen"
+                    name="nitrogen"
+                    placeholder="Enter nitrogen value"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <NatureIcon style={{ color: "#4CAF50" }} />
+                      </InputAdornment>
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <Tooltip title="Measured in parts per million (ppm)">
+                          <InfoIcon style={{ color: "#9E9E9E", fontSize: "1rem" }} />
+                        </Tooltip>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </Box>
+
+              <Box mb={4}>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel>Phosphorus (P)</InputLabel>
+                  <OutlinedInput
+                    value={npkValues.phosphorus}
+                    onChange={handleNpkChange}
+                    labelWidth={115}
+                    type="number"
+                    id="phosphorus"
+                    name="phosphorus"
+                    placeholder="Enter phosphorus value"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <NaturePeopleIcon style={{ color: "#2196F3" }} />
+                      </InputAdornment>
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <Tooltip title="Measured in parts per million (ppm)">
+                          <InfoIcon style={{ color: "#9E9E9E", fontSize: "1rem" }} />
+                        </Tooltip>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </Box>
+
+              <Box mb={4}>
+                <FormControl fullWidth variant="outlined">
+                  <InputLabel>Potassium (K)</InputLabel>
+                  <OutlinedInput
+                    value={npkValues.potassium}
+                    onChange={handleNpkChange}
+                    labelWidth={105}
+                    type="number"
+                    id="potassium"
+                    name="potassium"
+                    placeholder="Enter potassium value"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <EmojiNatureIcon style={{ color: "#FF9800" }} />
+                      </InputAdornment>
+                    }
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <Tooltip title="Measured in parts per million (ppm)">
+                          <InfoIcon style={{ color: "#9E9E9E", fontSize: "1rem" }} />
+                        </Tooltip>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </Box>
+            </Grid>
+          </Grid>
+
+          {npkValues.nitrogen && npkValues.phosphorus && npkValues.potassium && crop && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Box 
+                mt={4} 
+                p={3} 
+                textAlign="center" 
+                bgcolor="rgba(76, 175, 80, 0.1)" 
+                borderRadius="0.8rem"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+              >
+                <Box display="flex" alignItems="center" mb={2}>
+                  <CheckCircleIcon style={{ color: "#4CAF50", marginRight: "0.5rem" }} />
+                  <Typography variant="h6">
+                    Recommended Crop: <strong>{crop.toUpperCase()}</strong>
                   </Typography>
-                </motion.div>
+                </Box>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  size="large"
+                  onClick={() => {
+                    handlePageChange(7);
+                  }}
+                  style={{
+                    marginTop: "1rem",
+                    paddingLeft: "2rem",
+                    paddingRight: "2rem",
+                    backgroundColor: "#4CAF50",
+                    borderRadius: "2rem"
+                  }}
+                >
+                  Predict Crop Yield
+                </Button>
+              </Box>
+            </motion.div>
+          )}
+
+          {npkValues.nitrogen && npkValues.phosphorus && npkValues.potassium && !crop && (
+            <Box textAlign="center" mt={4}>
+              {spin ? (
+                <CircularProgress style={{ color: "#4CAF50" }} />
+              ) : (
                 <motion.div
-                  initial={{ opacity: 0, x: "-100vw" }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    delay: 1,
-                    type: "spring",
-                    stiffness: 150,
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    transition: {
-                      yoyo: Infinity,
-                    },
-                  }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <Button
                     color="primary"
                     variant="contained"
+                    size="large"
                     onClick={() => {
-                      handlePageChange(7);
+                      setSpin(true);
+                      setTimeout(handlePredictCropApproach2, 2000);
+                    }}
+                    style={{
+                      paddingLeft: "2rem",
+                      paddingRight: "2rem",
+                      backgroundColor: "#4CAF50",
+                      borderRadius: "2rem"
                     }}
                   >
-                    PREDICT CROP YIELD
+                    Predict Recommended Crop
                   </Button>
                 </motion.div>
-              </>
-            ) : spin ? (
-              <Typography style={{ marginTop: "20px" }}>
-                <CircularProgress />
-              </Typography>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, x: "-100vw" }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 100,
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  transition: {
-                    yoyo: Infinity,
-                  },
-                }}
-              >
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={() => {
-                    setSpin(true);
-                    setTimeout(handlePredictCropApproach2, 2000);
-                  }}
-                >
-                  PREDICT CROP
-                </Button>
-              </motion.div>
-            ))}
-        </div>
-      </div>
-    </>
+              )}
+            </Box>
+          )}
+
+          <Box mt={4} textAlign="center">
+            <Typography variant="body2" color="textSecondary">
+              NPK values help us determine the appropriate crop for your soil composition.
+              Higher accuracy in these values leads to better recommendations.
+            </Typography>
+          </Box>
+        </motion.div>
+      </Paper>
+    </Box>
   );
 };
 
