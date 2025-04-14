@@ -15,6 +15,7 @@ import NpkPrediction from "./Components/PredictCropApproach1/components/NpkPredi
 import PredictFertilizer from "./Components/PredictCropApproach1/components/PredictFertilizer";
 import PredictCropApproach2 from "./Components/PredictCropApproach2";
 import PredictCropYield from "./Components/PredictCropYield";
+import FinalSummary from "./Components/PredictCropYield/components/finalSummary/finalSummary.container";
 
 const CropRecommendationView = ({
   page,
@@ -220,7 +221,7 @@ const CropRecommendationView = ({
             handleCropChange={handleCropChange}
             handleProgressChange={handleProgressChange}
           />
-        ) : page >= 5 && (
+        ) : page === 7 ? (
           <PredictCropYield
             page={page}
             handlePageChange={handlePageChange}
@@ -244,7 +245,44 @@ const CropRecommendationView = ({
             handleCropYield={handleCropYield}
             handleProgressChange={handleProgressChange}
           />
-        )}
+        ) : page === 8 ? (
+          <PredictCropYield
+            page={page}
+            handlePageChange={handlePageChange}
+            approach={approach}
+            chosenstate={chosenstate}
+            locationval={locationval}
+            crop={crop}
+            fertilizer={fertilizer}
+            npkValues={npkValues}
+            area={area}
+            handleAreaChange={handleAreaChange}
+            areaval={areaval}
+            handleAreaValChange={handleAreaValChange}
+            season={season}
+            seasonval={seasonval}
+            handleSeasonChange={handleSeasonChange}
+            handleSeasonValChange={handleSeasonValChange}
+            allseasons={allseasons}
+            handleSeasonAPI={handleSeasonAPI}
+            cropyield={cropyield}
+            handleCropYield={handleCropYield}
+            handleProgressChange={handleProgressChange}
+          />
+        ) : page === 9 ? (
+          <FinalSummary
+            approach={approach}
+            chosenstate={chosenstate}
+            locationval={locationval}
+            crop={crop}
+            npkValues={npkValues}
+            areaval={areaval}
+            seasonval={seasonval}
+            cropyield={cropyield}
+            handlePageChange={handlePageChange}
+            handleProgressChange={handleProgressChange}
+          />
+        ) : null}
       </div>
     </>
   );

@@ -52,22 +52,24 @@ const Login = () => {
         error = "Alphanumeric characters only allowed";
       }
     } else if (name === "password") {
-      if (
+      if (!value.length) {
+        error = "Password is required";
+      } else if (value.length < 8) {
+        error = "Password must be at least 8 characters";
+      } else if (
         !value.match(/[a-z]/g) ||
         !value.match(/[A-Z]/g) ||
         !value.match(/[0-9]/g) ||
         !value.match(/[^a-zA-Z\d]/g)
       ) {
-        error = "Invalid Password.";
-      } else if (!value.length >= 8) {
-        error = "Minimum 8 characters.";
+        error = "Password must contain uppercase, lowercase, number, and special character";
       }
     }
     setLoginDetailsErrors({ ...loginDetailsErrors, [name]: error });
   };
 
-  const handleGoogleSignin = (username, password, full_name) => {
-    let loginobj = {
+  const handleGoogleSignin = (username, password) => {
+    const loginobj = {
       username: username,
       password: password,
     };
@@ -75,31 +77,35 @@ const Login = () => {
   };
 
   const handleSubmit = (logindetails) => {
+    // Validate all fields before submission
+    const hasErrors = Object.values(loginDetailsErrors).some(error => error !== "");
+    if (hasErrors) {
+      dispatch(addFailureAlert("Please fix the errors before submitting"));
+      return;
+    }
+
     dispatch(showBackDrop());
     login(logindetails)
       .then((res) => {
         dispatch(addUserToken(res.token));
-        dispatch(addSuccessAlert(res.message));
+        dispatch(addSuccessAlert("Login successful!"));
         dispatch(hideBackDrop());
         history.push("/home");
       })
       .catch((error) => {
         dispatch(hideBackDrop());
-        dispatch(addFailureAlert(error.response.data.message));
+        dispatch(addFailureAlert(error.response?.data?.message || "Login failed. Please try again."));
       });
   };
 
   return (
-    <>
-      <LoginPageView
-        loginDetails={loginDetails}
-        loginDetailsErrors={loginDetailsErrors}
-        setLoginDetails={setLoginDetails}
-        handleLoginDetails={handleLoginDetails}
-        handleSubmit={handleSubmit}
-        handleGoogleSignin={handleGoogleSignin}
-      />
-    </>
+    <LoginPageView
+      loginDetails={loginDetails}
+      loginDetailsErrors={loginDetailsErrors}
+      handleLoginDetails={handleLoginDetails}
+      handleSubmit={handleSubmit}
+      handleGoogleSignin={handleGoogleSignin}
+    />
   );
 };
 

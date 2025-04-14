@@ -23,6 +23,7 @@ import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 import UpdateIcon from "@material-ui/icons/Update";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { useHistory } from "react-router-dom";
 
 //common components
 import Dropdown from "../../../../../../../../Components/Dropdown";
@@ -40,6 +41,8 @@ const GetSeasonView = ({
   handlePredictCropYield,
   handleSeasonAutopredict,
 }) => {
+  const history = useHistory();
+
   return (
     <Box
       display="flex"

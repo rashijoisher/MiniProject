@@ -161,7 +161,7 @@ const NpkPredictionView = ({
                   variant="contained"
                   size="large"
                   onClick={() => {
-                    handlePageChange(5);
+                    handlePageChange(7);
                   }}
                   style={{
                     backgroundColor: "#4CAF50",
