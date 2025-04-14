@@ -7,9 +7,10 @@ import window from "global";
 const Container = styled.div`
   width: 100vw;
   height: calc(100vh - 65px);
-  position: absolute;
+  position: relative;
   box-shadow: 0px 0px 25px -8px rgba(53, 53, 53, 0.82);
   overflow: hidden;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   @media only screen and (max-width: 500px) {
     width: 100%;
   }
@@ -18,36 +19,51 @@ const Container = styled.div`
 const PageDiv = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   text-align: center;
   font-size: 37px;
   font-weight: bold;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 `;
 
 const StyledSVG = styled.svg`
   position: absolute;
   height: 100%;
-  width: 10px; //it makes the liquid swipe occuping less size, consequently making the UI under more accessable to interact.
+  width: 10px;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+  z-index: 2;
 `;
 
 const PageContainer = styled.div`
-  //it was creating a layer that was over the buttons.
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 `;
 
 const StyledButton = styled(animated.button)`
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   font-family: "Oswald", sans-serif;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.9);
   color: ${(props) => props.color};
-  border: 1px solid ${(props) => props.color};
-  &::focus {
-    outline: 0;
+  border: 2px solid ${(props) => props.color};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  &:hover {
+    transform: scale(1.1);
+    background: ${(props) => props.color};
+    color: white;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -92,13 +108,17 @@ const Page = ({ children, theme, index, setActive, gone = false }) => {
     posX: -50,
     posY: height * 0.72 - 20,
     config: {
-      mass: 3,
+      mass: 2,
+      tension: 300,
+      friction: 20
     },
   }));
   const [{ d }, setDvalue] = useSpring(() => ({
     d: gone ? getPath(0, 0, w) : getPath(height * 0.72, 0, 0),
     config: {
-      mass: 3,
+      mass: 2,
+      tension: 300,
+      friction: 20
     },
     onRest: () => {
       if (isGone) {
