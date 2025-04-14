@@ -40,9 +40,11 @@ const PredictCrop = ({
       .then((response) => {
         console.log(response["crop"]);
         handleCropChange(response["crop"]);
+        setShowSpinner(false);
       })
       .catch((err) => {
         console.log(err);
+        setShowSpinner(false);
       });
   };
 
