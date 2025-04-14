@@ -1,10 +1,8 @@
 matplotlib
-numpy == 1.14.6
-opencv-python
+numpy 
 pandas
 seaborn
 scikit-learn
-tensorflow
 tqdm
 Flask_SQLAlchemy
 requests

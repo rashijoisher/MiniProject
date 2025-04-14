@@ -275,15 +275,6 @@ def recommendCropYield(current_user):
     return jsonify({"yield": crop_yield[0]})
 
 
-@app.route("/weedDetection", methods=['POST'])
-def weedDetection():
-    data = request.json
-    imageURI = data.get('imageURI')
-    pred_output = utils.detection(imageURI)
-    pred_output = list(map(utils.convertToList, pred_output))
-    return Response(json.dumps(pred_output),  mimetype='application/json')
-
-
 @app.route("/states", methods=['GET'])
 @token_required
 def getStates(current_user):
