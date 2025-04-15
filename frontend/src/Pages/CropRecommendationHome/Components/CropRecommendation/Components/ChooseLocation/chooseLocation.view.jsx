@@ -279,7 +279,7 @@ const ChooseLocationView = ({
           
           <Box mt={4} textAlign="center">
             <Typography variant="body2" color="textSecondary">
-              Your location helps us determine local weather patterns and soil conditions
+              Your location helps us determine local weather patterns
               for more accurate recommendations.
             </Typography>
           </Box>

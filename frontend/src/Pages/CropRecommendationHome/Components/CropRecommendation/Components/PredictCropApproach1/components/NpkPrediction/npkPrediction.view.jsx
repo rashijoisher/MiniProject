@@ -64,7 +64,7 @@ const NpkPredictionView = ({
 
           <Box textAlign="center" mb={4}>
             <Typography variant="subtitle1" color="textSecondary" paragraph>
-              Based on your location and crop selection, here are the predicted NPK values for your soil
+              Based on your location and crop selection, here are the essential NPK values for your soil
             </Typography>
           </Box>
 
@@ -150,7 +150,7 @@ const NpkPredictionView = ({
 
           <Box mt={4} textAlign="center">
             <Typography variant="body1" paragraph style={{ color: "#666" }}>
-              These NPK values represent the essential nutrients in your soil. They are crucial for determining the appropriate fertilizer and crop management practices.
+              These NPK values represent the essential nutrients in your soil. These were determined by using the weather at your location and the crop shown previously. They are crucial for determining the appropriate fertilizer and crop management practices.
             </Typography>
             <Box mt={3}>
               <motion.div

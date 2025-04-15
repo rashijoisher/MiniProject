@@ -65,7 +65,7 @@ const FertilizerQuestionView = ({ handleYes, handleNo }) => {
                       Predict NPK Values
                     </Typography>
                     <Typography variant="body2" color="textSecondary" align="center">
-                      Our AI will analyze your location and crop data to predict the Nitrogen, Phosphorus, and Potassium values in your soil.
+                      Our ML model will analyze your location and crop data to predict the essential Nitrogen, Phosphorus, and Potassium values in your soil.
                     </Typography>
                     <Box flexGrow={1} />
                     <Button
@@ -75,7 +75,7 @@ const FertilizerQuestionView = ({ handleYes, handleNo }) => {
                       fullWidth
                       onClick={handleYes}
                     >
-                      Use AI Prediction
+                      Use Prediction
                     </Button>
                   </Box>
                 </Paper>

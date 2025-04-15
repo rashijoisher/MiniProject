@@ -238,7 +238,7 @@ const GetSeasonView = ({
                             <CountUp end={cropyield} duration={3} decimals={2} /> kg
                           </Typography>
                           <Typography variant="body2" color="textSecondary">
-                            per square meter
+                            per ______
                           </Typography>
                         </Box>
                       </CardContent>
@@ -271,7 +271,7 @@ const GetSeasonView = ({
           <Box mt={4} textAlign="center">
             <Typography variant="body2" color="textSecondary">
               Different seasons have different weather conditions which affect crop growth and yield.
-              Accurate season information improves the precision of our predictions.
+              Accurate season information improves the precision of our estimations.
             </Typography>
           </Box>
         </motion.div>
